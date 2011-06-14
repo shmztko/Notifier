@@ -1,6 +1,6 @@
 ReadMe
 
-テストの変更。
+build.xml を ant 実行すると ./release 以下にモジュールがZIPファイルで作成されます。
 
 
 This project includes following libraries.
