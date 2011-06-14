@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<project name="notifier" default="release-build" basedir=".">
+
+	<!-- 各種プロパティ指定 -->
+	<property name="application.name" value="${ant.project.name}"/>
+
+	<property name="build.dir" value="build"/>
+	<property name="jar.dir" value="${build.dir}/jar"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+
+    <property name="lib.dir" value="lib"/>
+    <property name="src.dir" value="src"/>
+
+    <property name="release.dir" value="release"/>
+
+	<!-- コンパイル時のクラスパス指定 -->
+	<path id="complie.classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar"/>
+		<fileset dir="${lib.dir}" includes="**/*.dll"/>
+	</path>
+
+	<!-- Jar作成タスク定義 -->
+    <target name="clean-build">
+        <delete dir="${build.dir}"/>
+    </target>
+
+	<target name="prepare">
+        <mkdir dir="${jar.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="prepare">
+        <javac
+        	srcdir="${src.dir}"
+        	destdir="${classes.dir}"
+			classpathref="complie.classpath"
+        	includes="**/*.java,**/*.properties"
+    		target="1.6"
+        	encoding="UTF-8"
+        />
+    	<copy todir="${classes.dir}" file="${src.dir}/fetcher.properties"/>
+    </target>
+
+	<target name="jar" depends="compile">
+		<jar basedir="${classes.dir}" includes="**/**" destfile="${jar.dir}/${application.name}.jar"/>
+    </target>
+
+	<!-- 配布用zip作成タスク定義 -->
+	<property name="temp.dir" value="temp"/>
+
+	<target name="clean-release" depends="jar">
+		<delete>
+			<fileset dir="${release.dir}" includes="**/**" />
+		</delete>
+	</target>
+
+	<target name="release-build" depends="clean-release">
+		<mkdir dir="${temp.dir}"/>
+
+		<copy todir="${temp.dir}/${lib.dir}">
+			<fileset dir="${lib.dir}" includes="**/*.jar" />
+			<fileset dir="${lib.dir}" includes="**/*.dll" />
+		</copy>
+
+		<copy todir="${temp.dir}">
+			<fileset dir="exec" includes="**/*.sh" />
+			<fileset dir="exec" includes="**/*.bat" />
+		</copy>
+
+		<copy todir="${temp.dir}/${lib.dir}" file="${jar.dir}/${application.name}.jar" />
+
+		<copy todir="${temp.dir}" file="${src.dir}/${application.name}.properties"/>
+
+		<copy todir="${temp.dir}" file="LICENSE-2.0.txt"/>
+		<copy todir="${temp.dir}" file="README.txt"/>
+
+		<zip destfile="${release.dir}/${application.name}.zip">
+			<fileset dir="${temp.dir}" includes="**/*"/>
+		</zip>
+
+		<delete dir="${temp.dir}"/>
+	</target>
+
+</project>
+

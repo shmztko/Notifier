@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/rome/rome-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/rome/rome-fetcher-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/skype/skype_full.jar"/>
+	<classpathentry kind="lib" path="lib/activation.jar"/>
+	<classpathentry kind="lib" path="lib/guava-r09.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/mail.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/api/gdata-calendar-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/api/gdata-calendar-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/api/gdata-docs-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/api/gdata-docs-meta-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/gdata-client-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/gdata-client-meta-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/gdata-core-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/gdata/gdata-media-1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/twitter4j-core-2.2.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
