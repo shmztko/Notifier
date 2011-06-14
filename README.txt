@@ -1,5 +1,8 @@
 ReadMe
 
+テストの変更。
+
+
 This project includes following libraries.
 
  - Skype4java(http://developer.skype.com/wiki/Java_API).
